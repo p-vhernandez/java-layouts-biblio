@@ -1,3 +1,6 @@
+import components.BiblioToolbar;
+
+import javax.swing.*;
 import java.awt.*;
 
 public class BiblioUI {
@@ -11,15 +14,21 @@ public class BiblioUI {
     }
 
     public void initializeUI() {
-        biblio.setTitle("Biblio");
-        biblio.setPreferredSize(new Dimension(800, 1000));
+        biblio.setTitle("Biblio.bib");
+        biblio.setPreferredSize(new Dimension(850, 850));
         biblio.setLayout(biblioLayout);
 
         setUpToolbar();
     }
 
     private void setUpToolbar() {
+        BiblioToolbar biblioToolbar = new BiblioToolbar();
+        biblio.add(biblioToolbar, BorderLayout.NORTH);
+    }
 
+    private void setUpDocumentList() {
+        JPanel listPanel = new JPanel();
+        biblio.add(listPanel);
     }
 
 }

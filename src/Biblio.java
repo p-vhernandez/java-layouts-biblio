@@ -12,6 +12,8 @@ public class Biblio extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUpAppIcon();
         setUpUI();
+
+        pack();
     }
 
     private void setUpAppIcon() {
