@@ -1,4 +1,8 @@
 import components.BiblioToolbar;
+import components.DocumentDetails;
+import components.DocumentList;
+import components.SidePanel;
+import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,11 +18,14 @@ public class BiblioUI {
     }
 
     public void initializeUI() {
-        biblio.setTitle("Biblio.bib");
-        biblio.setPreferredSize(new Dimension(850, 850));
+        biblio.setTitle(Utils.getAppName());
+        biblio.setPreferredSize(new Dimension(Utils.getFullScreenWidth(),
+                Utils.getFullScreenHeight()));
         biblio.setLayout(biblioLayout);
 
         setUpToolbar();
+        setUpMainPanel();
+        setUpSidePanel();
     }
 
     private void setUpToolbar() {
@@ -26,9 +33,29 @@ public class BiblioUI {
         biblio.add(biblioToolbar, BorderLayout.NORTH);
     }
 
-    private void setUpDocumentList() {
-        JPanel listPanel = new JPanel();
-        biblio.add(listPanel);
+    private void setUpMainPanel() {
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+
+        setUpDocumentList(mainPanel);
+        setUpDocumentDetails(mainPanel);
+
+        biblio.add(mainPanel);
+    }
+
+    private void setUpDocumentList(JPanel mainPanel) {
+        DocumentList documentList = new DocumentList();
+        mainPanel.add(documentList);
+    }
+
+    private void setUpDocumentDetails(JPanel mainPanel) {
+        DocumentDetails documentDetails = new DocumentDetails();
+        mainPanel.add(documentDetails);
+    }
+
+    private void setUpSidePanel() {
+        SidePanel sidePanel = new SidePanel();
+        biblio.add(sidePanel, BorderLayout.EAST);
     }
 
 }

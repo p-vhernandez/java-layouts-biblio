@@ -14,7 +14,8 @@ public class BiblioToolbar extends JToolBar {
     }
 
     private void setUpUI() {
-        setPreferredSize(new Dimension(850, 70));
+        setPreferredSize(new Dimension(Utils.getFullScreenWidth(),
+                Utils.getToolbarHeight()));
         setMaximumSize(getPreferredSize());
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -42,9 +43,10 @@ public class BiblioToolbar extends JToolBar {
 
     private void setUpSearchBar() {
         PlaceholderTextField searchBar = new PlaceholderTextField();
-        searchBar.setPlaceholder("Search...");
-        searchBar.setPreferredSize(new Dimension(250, 40));
-        searchBar.setMaximumSize(new Dimension(250, 40));
+        searchBar.setPlaceholder(Utils.getTxtSearch());
+        searchBar.setPreferredSize(new Dimension(Utils.getSearchBarWidth(),
+                Utils.getSearchBarHeight()));
+        searchBar.setMaximumSize(searchBar.getPreferredSize());
 
         add(searchBar);
     }
