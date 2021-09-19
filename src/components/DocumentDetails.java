@@ -1,26 +1,19 @@
 package components;
 
-import utils.Utils;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class DocumentDetails extends JPanel {
 
+    private final DocumentDetailsUI view;
+
     public DocumentDetails() {
-        setLayout(new FlowLayout(FlowLayout.LEFT));
-        setPreferredSize(new Dimension(Utils.getFullScreenWidth(),
-                Utils.getDocDetailsHeight()));
+        this.view = new DocumentDetailsUI(this);
+
         setUpUI();
     }
 
     private void setUpUI() {
-        JLabel label = new JLabel();
-        label.setText("This is supposed to be the panel that displays" +
-                " all the document details, but it is empty for now" +
-                " 'cause we are just displaying layouts.");
-
-        add(label);
+        this.view.initializeUI();
     }
 
 }

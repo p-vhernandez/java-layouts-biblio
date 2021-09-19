@@ -1,32 +1,22 @@
 package components;
 
-import utils.Utils;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class DocumentList extends JPanel {
 
+    private final DocumentListUI view;
+
     public DocumentList() {
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(Utils.getFullScreenWidth(),
-                Utils.getDocListHeight()));
-        setMinimumSize(getPreferredSize());
+        this.view = new DocumentListUI(this);
 
         setUpUI();
     }
 
     private void setUpUI() {
-        JTable documentTable = new JTable(TABLE_DATA, COLUMN_NAMES);
-        documentTable.setFillsViewportHeight(true);
-        documentTable.setPreferredSize(new Dimension(Utils.getDocTableWidth(),
-                Utils.getDocListHeight()));
-
-        add(documentTable.getTableHeader(), BorderLayout.NORTH);
-        add(documentTable, BorderLayout.CENTER);
+        this.view.initializeUI();
     }
 
-    private static final String[] COLUMN_NAMES = {
+    static final String[] COLUMN_NAMES = {
             "Key quotes",
             "Title",
             "Date",
@@ -35,7 +25,7 @@ public class DocumentList extends JPanel {
             "Added"
     };
 
-    private static final Object[][] TABLE_DATA = {
+    static final Object[][] TABLE_DATA = {
             {"wilson01", "This is title 1", "01/01/2020", "Author 1", "Design", "03/03/2021"},
             {"wilson02", "This is title 2", "01/01/2020", "Author 2", "Maths", "03/03/2021"},
             {"wilson03", "This is title 3", "01/01/2020", "Author 3", "Cryptocurrency", "03/03/2021"},
